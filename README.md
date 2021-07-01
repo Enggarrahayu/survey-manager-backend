@@ -77,6 +77,7 @@ In the .env file, add database information to allow Laravel to connect to the da
 
 #### On your terminal type the command
 1. php artisan migrate
+2. php artisan db:seed
 
 
 
