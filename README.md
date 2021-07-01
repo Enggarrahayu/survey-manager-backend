@@ -29,6 +29,7 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 
 ## Laravel Sponsors
 
+
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
 ### Premium Partners
@@ -60,3 +61,24 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Installation Steps
+
+#### On your terminal type the command:
+1. composer install
+2. composer require laravel/passport
+3. php artisan passport:install
+4. cp .env.example .env
+5. php artisan key:generate
+
+Then:
+Create empty database
+In the .env file, add database information to allow Laravel to connect to the database
+
+#### On your terminal type the command
+1. php artisan migrate
+2. php artisan db:seed
+
+
+
+
