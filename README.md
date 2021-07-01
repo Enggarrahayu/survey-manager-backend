@@ -66,18 +66,23 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 #### On your terminal type the command:
 1. composer install
-2. composer require laravel/passport
-3. php artisan passport:install
-4. cp .env.example .env
-5. php artisan key:generate
+2. composer update
+3. composer require laravel/passport
 
 Then:
 Create empty database
 In the .env file, add database information to allow Laravel to connect to the database
 
-#### On your terminal type the command
-1. php artisan migrate
-2. php artisan db:seed
+5. cp .env.example .env
+6. php artisan key:generate
+7. php artisan migrate
+8. php artisan passport:install <br>
+<b> on each Seeders file add declare Hash and DB class after the namespace declaration </b> <br>
+    - use Illuminate\Support\Facades\Hash; <br>
+    - use Illuminate\Support\Facades\DB; <br>
+9. php artisan db:seed <br>
+ <b> if there'are still any errros add backslash before DB class inside run function </b> <br>
+
 
 
 
