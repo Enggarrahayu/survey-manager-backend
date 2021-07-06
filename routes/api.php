@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', 'App\Http\Controllers\API\UserController@login');
 Route::post('register', 'App\Http\Controllers\API\UserController@register');
 Route::post('survey/create', 'App\Http\Controllers\API\SurveyController@postSurvey');
+Route::get('survey/{id}', 'App\Http\Controllers\API\SurveyController@detail');
 
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('user/detail', 'App\Http\Controllers\API\UserController@details');
