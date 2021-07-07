@@ -5,11 +5,19 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Survey;
+use App\Models\Question;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class SurveyController extends Controller
 {
+    private $question;
+    public $successStatus = 200;
+
+    public function __construct(Question $question)
+    {
+        $this->question = $question;
+    }
 
     public function postSurvey(Request $request)
     {
@@ -53,8 +61,28 @@ class SurveyController extends Controller
         }
     }
 
-    public function show($id)
+    public function detail($id)
     {
-        return Survey::find($id);
+        $survey = Survey::find($id);
+        if($survey){
+            return response()->json(['success' => $survey], $this->successStatus);
+        }
+            return response()->json(['error'=>'Survey ID not found'], 401);
     }
-} 
+
+    public function addQuestion(Request $request , $id){
+        $surveys = Survey::where('id', $id)->first();
+        $survey = Survey::find($id);
+            if($survey)
+            {
+                $this->question->question = $request->get('question');
+                $this->question->type = $request->get('type');
+                $this->question->survey_id = $surveys->id;
+
+                $this->question->save();
+                return response()->json(['success' => $survey], $this->successStatus);
+            }
+        }
+    }
+
+
