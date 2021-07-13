@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenameSurveyTable extends Migration
+class DropQuestionSurveyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class RenameSurveyTable extends Migration
      */
     public function up()
     {
-        Schema::rename('survey', 'surveys');
+        Schema::dropIfExists('questions');
     }
 
     /**

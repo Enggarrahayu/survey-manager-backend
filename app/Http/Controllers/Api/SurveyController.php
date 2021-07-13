@@ -61,7 +61,7 @@ class SurveyController extends Controller
         }
     }
 
-    public function detail($id)
+    public function getSurveyByID($id)
     {
         $survey = Survey::find($id);
         if($survey){
@@ -72,15 +72,17 @@ class SurveyController extends Controller
 
     public function addQuestion(Request $request , $id){
         $surveys = Survey::where('id', $id)->first();
+        $questions = new Question;
         $survey = Survey::find($id);
             if($survey)
             {
                 $this->question->question = $request->get('question');
                 $this->question->type = $request->get('type');
                 $this->question->survey_id = $surveys->id;
-
                 $this->question->save();
-                return response()->json(['success' => $survey], $this->successStatus);
+                $success['question'] = $this->question->question;
+                $success['type'] = $this->question->type;
+                return response()->json(['success' => $success], $this->successStatus);
             }
         }
     }
