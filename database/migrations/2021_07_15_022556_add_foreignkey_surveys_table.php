@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DropQuestionsTable extends Migration
+class AddForeignkeySurveysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class DropQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('questions');
+        Schema::table('surveys', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained();
+        });
     }
 
     /**
@@ -23,6 +25,6 @@ class DropQuestionsTable extends Migration
      */
     public function down()
     {
-        //
+        
     }
 }
