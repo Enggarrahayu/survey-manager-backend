@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Route::post('login', 'App\Http\Controllers\API\UserController@login');
 Route::post('register', 'App\Http\Controllers\API\UserController@register');
 Route::post('survey/create', 'App\Http\Controllers\API\SurveyController@postSurvey');
 Route::post('survey/{id}', 'App\Http\Controllers\API\SurveyController@addQuestion');
@@ -31,7 +31,7 @@ Route::group(
         // 'prefix'        =>  config('survey-manager.api_prefix'),
     ],
     function (){
-        Route::post('login', 'UserController@login');
+       
         Route::resource('/survey', 'SurveyAPIController', ['only' => [
             'index', 'store', 'update', 'destroy', 'show',
         ]]);
