@@ -1,30 +1,23 @@
 <?php
 
 namespace App\Http\Controllers\API;
-
-use App\Models\Survey;
-use Illuminate\Http\Request;
-use App\Http\Requests\CreateSurveyRequest;
-use App\Http\Requests\UpdateSurveyRequest;
-use App\Http\Resources\SurveyRecource;
+use Illuminate\Routing\Controller;
+use AidynMakhataev\LaravelSurveyJs\app\Models\Survey;
+use AidynMakhataev\LaravelSurveyJs\app\Http\Resources\SurveyResource;
+use AidynMakhataev\LaravelSurveyJs\app\Http\Requests\CreateSurveyRequest;
+use AidynMakhataev\LaravelSurveyJs\app\Http\Requests\UpdateSurveyRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SurveyAPIController extends Controller
 {
+    // public function __construct(){
+    //     $this->middleware('auth');
+    // }
+
     public function index()
     {
         $surveys = Survey::latest()->paginate(config('survey-manager.pagination_perPage', 10));
-
         return SurveyResource::collection($surveys);
-    }
-
-    public function store(CreateSurveyRequest $request)
-    {
-        $survey = Survey::create($request->all());
-
-        return response()->json([
-            'data'      =>  new SurveyResource($survey),
-            'message'   =>  'Survey saved successfully',
-        ], 201);
     }
 
     public function show($id)
@@ -39,6 +32,21 @@ class SurveyAPIController extends Controller
             'data'      =>  new SurveyResource($survey),
             'message'   =>  'Survey successfully retrieved',
         ]);
+    }
+
+    public function store(CreateSurveyRequest $request)
+    {
+        // $survey = Survey::create($request->all());
+        $survey = Survey::create([
+            'name'          =>  $request->input('name'),
+            'json'          =>  $request->input('json'),
+            'user_id'       =>  Auth::id(),
+        ]);
+
+        return response()->json([
+            'data'      =>  new SurveyResource($survey),
+            'message'   =>  'Survey successfully create',
+        ], 201);
     }
 
     public function update($id, UpdateSurveyRequest $request)

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Auth;
 
 class Survey extends Model
 {
@@ -14,9 +15,9 @@ class Survey extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'name', 'slug', 'json',
+        'name',  'user_id', 'slug', 'json',
     ];
-
+    
     protected $casts = [
         'json'  =>  'array',
     ];
@@ -43,7 +44,7 @@ class Survey extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(config('survey-manager.user_model'), 'user_id');
 
     }
 
