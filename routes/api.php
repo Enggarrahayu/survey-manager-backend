@@ -28,6 +28,9 @@ Route::group(
     Route::resource('/survey', 'SurveyAPIController', ['only' => [
         'index', 'store', 'update', 'destroy', 'show',
     ]]);
+    Route::resource('/team', TeamController::class, ['only' => [
+        'index', 'store', 'update', 'destroy', 'show',
+    ]]);
     Route::resource('/survey/{survey}/result', 'SurveyResultAPIController');
 }); 
 

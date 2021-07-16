@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeColumnsUser extends Migration
+class ChangeUserStatusColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class ChangeColumnsUser extends Migration
      */
     public function up()
     {
-            Schema::table('users', function (Blueprint $table) {
-            $table->string('country')->nullable()->change();
-            $table->string('birthDate')->nullable()->change();
-            $table->string('userStatus')->nullable()->change();
-            $table->string('phone')->nullable()->change();
+        Schema::table('surveys', function (Blueprint $table) {
+            $table->string('survey_status')->nullable()->change();
         });
     }
 
