@@ -40,6 +40,11 @@ class User extends Authenticatable
 
     public function surveys()
     {
-        return $this->hasMany('AidynMakhataev\LaravelSurveyJs\app\Models\Survey');
+        return $this->hasMany('app\Models\Survey');
+    }
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class);
     }
 }
