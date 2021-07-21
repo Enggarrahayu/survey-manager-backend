@@ -16,7 +16,7 @@ class SurveyAPIController extends Controller
 
     public function index()
     {
-        $surveys = Survey::latest()->paginate(config('survey-manager.pagination_perPage', 10));
+        $surveys = Survey::where('user_id', Auth::user()->id)->latest()->paginate(config('survey-manager.pagination_perPage', 10));
         return SurveyResource::collection($surveys);
     }
 
