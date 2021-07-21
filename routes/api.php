@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::group(
     ['middleware' => 'auth:api',
      'namespace'     =>  'App\Http\Controllers\API',
