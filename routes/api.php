@@ -16,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(
+    ['middleware' => 'cors', 'json.response',
+     'namespace'     =>  'App\Http\Controllers\API',
+    ], 
+    function(){
+        Route::post('login', 'UserController@login');
+        Route::post('register', 'UserController@register');
+}); 
+Route::group(
     ['middleware' => 'auth:api',
      'namespace'     =>  'App\Http\Controllers\API',
     ], 
