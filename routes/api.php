@@ -23,6 +23,7 @@ Route::group(
         Route::post('login', 'UserController@login');
         Route::post('register', 'UserController@register');
 }); 
+
 Route::group(
     ['middleware' => 'auth:api',
      'namespace'     =>  'App\Http\Controllers\Teamwork',
@@ -32,8 +33,10 @@ Route::group(
      'store', 'index',
     ]]);
     Route::post('members/{id}', 'TeamMemberController@invite');
+    Route::get('pendingInvitations', 'TeamMemberController@pendingInvite');
 
 });
+
 Route::group(
     ['middleware' => 'auth:api',
      'namespace'     =>  'App\Http\Controllers\API',
@@ -44,9 +47,9 @@ Route::group(
     Route::resource('/survey', 'SurveyAPIController', ['only' => [
         'index', 'store', 'update', 'destroy', 'show',
     ]]);
-    Route::resource('/team', TeamController::class, ['only' => [
-        'index', 'store', 'update', 'destroy', 'show',
-    ]]);
+    // Route::resource('/team', TeamController::class, ['only' => [
+    //     'index', 'store', 'update', 'destroy', 'show',
+    // ]]);
     Route::resource('/survey/{survey}/result', 'SurveyResultAPIController');
 }); 
 
