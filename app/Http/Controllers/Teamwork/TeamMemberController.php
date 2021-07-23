@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Resources\TeamResource;
 use App\Http\Resources\TeamInvitationResource;
 use App\Http\Teamwork\Teamwork;
-// use Mpociot\Teamwork\Facades\Teamwork;
+use App\Models\User;
+use App\Models\TeamUser;
 use Mpociot\Teamwork\TeamInvite;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -20,6 +21,11 @@ class TeamMemberController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function user()
+    {
+        return $this->app->auth->user();
     }
 
     /**
@@ -41,7 +47,7 @@ class TeamMemberController extends Controller
             
         });
         return response()->json([
-            'message'   =>  'User already requested to join the team ',
+            'message'   =>  'Successfully sent invitation request to user ',
         ], 201);
     
     }
@@ -58,5 +64,23 @@ class TeamMemberController extends Controller
 		return TeamInvitationResource::collection($pending);
     }
 
+    public function acceptInvite($id){
+        $user = User::where('id', Auth::user()->id);
+        $users = new User;
+        $team_user = new TeamUser;
+        $team_invite_model = config('teamwork.invite_model');
+        $team_invite = $team_invite_model::findOrFail($id);
+        $team_invite->invitation_status = 1;
+        $team_invite->update();
+
+        $team_user->user_id = Auth::user()->id;
+        $team_user->team_id = $team_invite_model::where('id', $id)->first()->team_id;
+        $team_user->save();
+
+
+        return response()->json([
+            'message'   =>  'User successfully join to the team',
+        ]);
+    }
 
 }
