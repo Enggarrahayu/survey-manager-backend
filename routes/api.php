@@ -25,6 +25,16 @@ Route::group(
 }); 
 Route::group(
     ['middleware' => 'auth:api',
+     'namespace'     =>  'App\Http\Controllers\Teamwork',
+    ], 
+    function(){
+    Route::resource('/team', 'TeamController', ['only' => [
+     'store', 'index',
+    ]]);
+
+});
+Route::group(
+    ['middleware' => 'auth:api',
      'namespace'     =>  'App\Http\Controllers\API',
     ], 
     function(){
