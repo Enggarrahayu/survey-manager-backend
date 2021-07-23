@@ -31,6 +31,7 @@ Route::group(
     Route::resource('/team', 'TeamController', ['only' => [
      'store', 'index',
     ]]);
+    Route::post('members/{id}', 'TeamMemberController@invite');
 
 });
 Route::group(
