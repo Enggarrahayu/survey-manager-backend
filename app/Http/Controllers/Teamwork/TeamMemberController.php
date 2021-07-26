@@ -36,6 +36,7 @@ class TeamMemberController extends Controller
      */
     public function invite(Request $request, $team_id)
     {
+        if (User::where('email', '=', request('email'))->exists()) {
         $request->validate([
             'email' => 'required|email',
         ]);
@@ -49,6 +50,12 @@ class TeamMemberController extends Controller
         return response()->json([
             'message'   =>  'Successfully sent invitation request to user ',
         ], 201);
+         }
+         else{
+            return response()->json([
+                'message'   =>  'There is no user registered with this email',
+            ], 404);
+         }
     
     }
 
