@@ -32,9 +32,11 @@ Route::group(
     Route::resource('/team', 'TeamController', ['only' => [
      'store', 'index',
     ]]);
-    Route::post('members/{id}', 'TeamMemberController@invite');
+    Route::post('member/{id}', 'TeamMemberController@invite');
     Route::get('pendingInvitations', 'TeamMemberController@pendingInvite');
-    Route::get('acceptInvitation/{id}', 'TeamMemberController@acceptInvite');
+    Route::get('member/teams', 'TeamMemberController@showTeams');
+    Route::post('acceptInvitation/{id}', 'TeamMemberController@acceptInvite');
+    Route::get('try', 'TeamController@try');
 });
 
 Route::group(
@@ -47,9 +49,7 @@ Route::group(
     Route::resource('/survey', 'SurveyAPIController', ['only' => [
         'index', 'store', 'update', 'destroy', 'show',
     ]]);
-    // Route::resource('/team', TeamController::class, ['only' => [
-    //     'index', 'store', 'update', 'destroy', 'show',
-    // ]]);
+
     Route::resource('/survey/{survey}/result', 'SurveyResultAPIController');
 }); 
 
