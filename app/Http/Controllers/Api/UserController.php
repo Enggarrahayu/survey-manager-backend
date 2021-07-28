@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Team;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 
@@ -36,10 +37,17 @@ class UserController extends Controller
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()], 401);            
         }
-
+        
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
+
+        $name = $request->input('username');
+        
+        $team = new Team;
+        $team->name = $name. '-team';
+        $team->save();
+
         $success['token'] =  $user->createToken('nApp')->accessToken;
         $success['username'] =  $user->username;
 
