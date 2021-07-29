@@ -90,4 +90,11 @@ class TeamMemberController extends Controller
         ]);
     }
 
+    public function showOwnedTeam(){
+        $teamModel = config('teamwork.team_model');
+        $owned = $teamModel::where('owner_id', Auth::user()->id)
+                    ->get();  
+        return TeamResource::collection($owned);
+    }
+
 }
