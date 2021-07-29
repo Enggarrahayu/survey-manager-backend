@@ -21,4 +21,9 @@ class Team extends TeamworkTeam
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function surveys()
+    {
+        return $this->hasMany('app\Models\Survey');
+    }
 }

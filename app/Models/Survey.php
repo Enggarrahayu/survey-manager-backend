@@ -15,7 +15,7 @@ class Survey extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'name',  'user_id', 'slug', 'json',
+        'name',  'user_id', 'slug', 'json', 'team_id',
     ];
     
     protected $casts = [
@@ -45,7 +45,11 @@ class Survey extends Model
     public function user()
     {
         return $this->belongsTo(config('survey-manager.user_model'), 'user_id');
-
     }
 
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id');
+    }
+    
 }

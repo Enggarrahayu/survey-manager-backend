@@ -35,8 +35,7 @@ Route::group(
     Route::post('member/{id}', 'TeamMemberController@invite');
     Route::get('pendingInvitations', 'TeamMemberController@pendingInvite');
     Route::get('member/teams', 'TeamMemberController@showTeams');
-    Route::post('acceptInvitation/{id}', 'TeamMemberController@acceptInvite');
-    Route::get('try', 'TeamController@try');
+    Route::get('team/surveyTeam/{id}', 'TeamController@showSurveyByTeam');
 });
 
 Route::group(

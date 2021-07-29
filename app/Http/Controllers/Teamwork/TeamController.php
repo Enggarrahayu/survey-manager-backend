@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Resources\TeamResource;
 use App\Models\Team;
+use App\Models\Survey;
+use App\Models\TeamUser;
+use App\Http\Resources\SurveyTeamResource;
+use Illuminate\Support\Facades\Auth;
+
 use Mpociot\Teamwork\Exceptions\UserNotInTeamException;
 
 class TeamController extends Controller
@@ -52,4 +57,13 @@ class TeamController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+    public function showSurveyByTeam($id){
+        $surveyModel = new Survey;
+        $surveyTeam = $surveyModel
+                        ->where('team_id', $id)
+                        ->where('survey_status', 0)
+                        ->get();
+        
+        return SurveyTeamResource::collection($surveyTeam);
+    }
 }
