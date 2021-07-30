@@ -43,7 +43,9 @@ class TeamController extends Controller
             'name' => $request->name,
             'owner_id' => $request->user()->getKey(),
         ]);
-        $request->user()->attachTeam($team);
+
+        // $teamUser = new TeamUser;
+        // $request->user()->attachTeam($team);
 
         return response()->json([
             'data'      =>  new TeamResource($team),
