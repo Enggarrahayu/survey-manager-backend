@@ -46,6 +46,7 @@ class UserController extends Controller
         
         $team = new Team;
         $team->name = $name. '-team';
+        $team->owner_id = $user->id;
         $team->save();
 
         $success['token'] =  $user->createToken('nApp')->accessToken;
