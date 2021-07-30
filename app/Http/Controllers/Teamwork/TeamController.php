@@ -8,6 +8,8 @@ use App\Http\Resources\TeamResource;
 use App\Models\Team;
 use App\Models\Survey;
 use App\Models\TeamUser;
+use Illuminate\Support\Facades\DB;
+use App\Http\Resources\TeamInvitationResource;
 use App\Http\Resources\SurveyTeamResource;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,6 +27,17 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index()
+    {
+        $teams = DB::table('team_invites')
+            ->where('user_id', Auth::user()->id)
+            ->where('invitation_status', 1)
+            ->join('users', 'users.id', '=' ,'team_invites.user_id')
+            ->join('teams', 'teams.id', '=' , 'team_invites.team_id')
+            ->get();
+    
+            return TeamInvitationResource::collection($teams); 
+    }
     /**
      * Store a newly created resource in storage.
      *
