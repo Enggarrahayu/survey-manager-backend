@@ -36,10 +36,12 @@ Route::group(
         'index', 'store', 'update', 'destroy', 'show',
        ]]);
     Route::post('member/{id}', 'TeamMemberController@invite');
-    Route::get('pendingInvitations', 'TeamMemberController@pendingInvite');
-    Route::get('member/teams', 'TeamMemberController@showTeams');
+    Route::get('team/pendingInvitations', 'TeamMemberController@pendingInvite');
+    // Route::get('team', 'TeamMemberController@showTeams');
+    Route::post('team/acceptInvitation/{id}', 'TeamMemberController@acceptInvite');
     Route::get('team/surveyTeam/{id}', 'TeamController@showSurveyByTeam');
-    Route::get('member/ownedTeam', 'TeamMemberController@showOwnedTeam');
+    Route::get('ownedTeam', 'TeamMemberController@ownedTeam');
+    // Route::get('member/ownedTeam', 'TeamMemberController@showOwnedTeam');
 });
 
 Route::group(

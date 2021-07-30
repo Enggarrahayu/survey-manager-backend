@@ -11,6 +11,7 @@ use App\Http\Resources\TeamInvitationResource;
 use App\Http\Resources\MemberResource;
 use App\Http\Teamwork\Teamwork;
 use App\Models\User;
+use App\Models\Team;
 use App\Models\TeamUser;
 use Mpociot\Teamwork\TeamInvite;
 use Illuminate\Support\Facades\DB;
@@ -80,6 +81,12 @@ class TeamMemberController extends Controller
 		return TeamInvitationResource::collection($pending);
     }
 
+    public function ownedTeam(){
+        $owned = DB::table('teams')
+                ->where('owner_id', Auth::user()->id)
+                ->get();  
+        return TeamResource::collection($owned);
+    }
     public function acceptInvite($id){
         $user = User::where('id', Auth::user()->id);
         $users = new User;
