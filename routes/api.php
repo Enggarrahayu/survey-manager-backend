@@ -32,6 +32,9 @@ Route::group(
     Route::resource('/team', 'TeamController', ['only' => [
      'store', 'index',
     ]]);
+    Route::resource('/member', 'TeamMemberController', ['only' => [
+        'index', 'store', 'update', 'destroy', 'show',
+       ]]);
     Route::post('member/{id}', 'TeamMemberController@invite');
     Route::get('pendingInvitations', 'TeamMemberController@pendingInvite');
     Route::get('member/teams', 'TeamMemberController@showTeams');

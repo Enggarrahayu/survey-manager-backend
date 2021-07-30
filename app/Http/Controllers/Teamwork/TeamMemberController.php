@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Resources\TeamResource;
 use App\Http\Resources\TeamInvitationResource;
+use App\Http\Resources\MemberResource;
 use App\Http\Teamwork\Teamwork;
 use App\Models\User;
 use App\Models\TeamUser;
@@ -34,6 +35,14 @@ class TeamMemberController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+    public function show($id)
+    {
+        $teamUserModel = new TeamUser;
+        $member = $teamUserModel
+                    ->where('team_id', $id)
+                    ->get();
+        return MemberResource::collection($member);
+    }
     public function invite(Request $request, $team_id)
     {
         if (User::where('email', '=', request('email'))->exists()) {
