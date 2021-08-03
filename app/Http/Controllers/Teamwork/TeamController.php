@@ -8,6 +8,7 @@ use App\Http\Resources\TeamResource;
 use App\Models\Team;
 use App\Models\Survey;
 use App\Models\TeamUser;
+
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\TeamInvitationResource;
 use App\Http\Resources\SurveyTeamResource;
@@ -83,7 +84,7 @@ class TeamController extends Controller
         $teamUser->delete();
 
         return response()->json([
-            'data' => $id,
+            'data'    =>  new TeamResource($team),
             'message' => 'Team deleted successfully',
         ], 200);
 
