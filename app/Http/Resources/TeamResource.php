@@ -15,7 +15,7 @@ class TeamResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'name'          =>  $this->name,
+            'created at'       => $this->created_at,
         ];
     }
 }
