@@ -48,6 +48,12 @@ class TeamMemberController extends Controller
     }
     public function invite(Request $request, $team_id)
     {
+        if(TeamInvites::where('email', '=', request('email'))->where('team_id', $team_id)->where('invitation_status', 1)->exists()){
+            return response()->json([
+                'message'   =>  'User already join as a team member',
+            ], 404);
+         }
+
         if (User::where('email', '=', request('email'))->exists()) {
             $request->validate([
                 'email' => 'required|email',
