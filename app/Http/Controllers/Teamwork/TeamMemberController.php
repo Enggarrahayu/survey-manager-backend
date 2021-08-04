@@ -11,7 +11,9 @@ use App\Http\Resources\TeamInvitationResource;
 use App\Http\Resources\MemberResource;
 use App\Http\Teamwork\Teamwork;
 use App\Models\User;
+use App\Models\TeamInvites;
 use App\Models\Team;
+use App\Mail\SendMail;
 use App\Models\TeamUser;
 use Mpociot\Teamwork\TeamInvite;
 use Illuminate\Support\Facades\DB;
@@ -47,26 +49,36 @@ class TeamMemberController extends Controller
     public function invite(Request $request, $team_id)
     {
         if (User::where('email', '=', request('email'))->exists()) {
-        $request->validate([
-            'email' => 'required|email',
-        ]);
-
-        $teamModel = config('teamwork.team_model');
-        $team = $teamModel::findOrFail($team_id);
-        $teamwork = app('App\Http\Teamwork\Teamwork');
-        $teamwork->inviteToTeam($request->email, $team, function ($invite) {
-            
-        });
-        return response()->json([
-            'message'   =>  'Successfully sent invitation request to user ',
-        ], 201);
+            $request->validate([
+                'email' => 'required|email',
+            ]);
+    
+            $teamModel = config('teamwork.team_model');
+            $team = $teamModel::findOrFail($team_id);
+           
+            $teamwork = app('App\Http\Teamwork\Teamwork');
+            $teamwork->inviteToTeam($request->email, $team, function ($invite) {
+                $team_name = $invite->team->name;
+                $team_id = $invite->team->id;
+                $owner_id = $invite->team->owner_id;
+                $team_owner = User::where('id', $owner_id)->first()->username;
+                $accept_id = TeamInvites::where('email', request('email'))
+                                        ->where('team_id', $team_id)
+                                        ->first()->id;
+                $username = User::where('email', request('email'))->first()->username;
+                Mail::to($invite->email)->send(new SendMail($username, $team_name, $accept_id, $team_owner));
+            });
+            return response()->json([
+                'data'      =>  new TeamResource($team),
+                'message'   =>  'Successfully sent invitation request to user ',
+            ], 201);
          }
          else{
             return response()->json([
                 'message'   =>  'There is no user registered with this email',
             ], 404);
          }
-    
+       
     }
 
     public function pendingInvite()
@@ -87,6 +99,7 @@ class TeamMemberController extends Controller
                 ->get();  
         return TeamResource::collection($owned);
     }
+
     public function acceptInvite($id){
         $user = User::where('id', Auth::user()->id);
         $users = new User;
@@ -106,11 +119,6 @@ class TeamMemberController extends Controller
         ]);
     }
 
-    public function showOwnedTeam(){
-        $teamModel = config('teamwork.team_model');
-        $owned = $teamModel::where('owner_id', Auth::user()->id)
-                    ->get();  
-        return TeamResource::collection($owned);
-    }
+
 
 }

@@ -24,6 +24,8 @@ Route::group(
         Route::post('register', 'UserController@register');
 }); 
 
+
+
 Route::group(
     ['middleware' => 'auth:api',
      'namespace'     =>  'App\Http\Controllers\Teamwork',
@@ -35,6 +37,7 @@ Route::group(
     Route::resource('/member', 'TeamMemberController', ['only' => [
         'index', 'store', 'update', 'destroy', 'show',
        ]]);
+    Route::get('team/acceptInvitation/{id}', ['App\Http\Controllers\Teamwork\TeamMemberController', 'acceptInvite'])->name('teams.members.accept');
     Route::post('member/{id}', 'TeamMemberController@invite');
     Route::get('team/pendingInvitations', 'TeamMemberController@pendingInvite');
     // Route::get('team', 'TeamMemberController@showTeams');

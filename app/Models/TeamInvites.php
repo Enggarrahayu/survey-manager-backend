@@ -9,7 +9,7 @@ class TeamInvites extends Model
 {
     use HasFactory;
 
-    protected $table = 'surveys';
+    protected $table = 'team_invites';
     protected $primaryKey = 'id';
     public $incrementing = false;
 }

@@ -15,7 +15,7 @@ class MemberResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'member name'    =>  User::where('id', $this->user_id)->first()->username,
+            'member_name'    =>  User::where('id', $this->user_id)->first()->username,
         ];
     }
 }
