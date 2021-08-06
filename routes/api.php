@@ -47,6 +47,8 @@ Route::group(
     // Route::get('member/ownedTeam', 'TeamMemberController@showOwnedTeam');
 });
 
+Route::get('team/acceptInvitation/{id}', ['App\Http\Controllers\Teamwork\TeamMemberController', 'acceptInvite'])->name('teams.members.accept');
+
 Route::group(
     ['middleware' => 'auth:api',
      'namespace'     =>  'App\Http\Controllers\API',

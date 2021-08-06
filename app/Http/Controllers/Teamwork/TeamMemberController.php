@@ -22,10 +22,10 @@ use Illuminate\Support\Facades\Auth;
 class TeamMemberController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     public function user()
     {
@@ -115,7 +115,7 @@ class TeamMemberController extends Controller
         $team_invite->invitation_status = 1;
         $team_invite->update();
 
-        $team_user->user_id = Auth::user()->id;
+        $team_user->user_id = TeamInvites::where('id', $id)->first()->user_id;
         $team_user->team_id = $team_invite_model::where('id', $id)->first()->team_id;
         $team_user->save();
 
