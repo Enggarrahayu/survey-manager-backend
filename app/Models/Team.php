@@ -14,7 +14,7 @@ class Team extends TeamworkTeam
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'name', 
+        'name','owner_id', 
     ];
     
     public function users()

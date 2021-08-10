@@ -24,6 +24,15 @@ Route::group(
         Route::post('register', 'UserController@register');
 }); 
 
+Route::group(
+    [
+    'middleware'    =>  'cors', 'json.response',
+     'namespace'     =>  'App\Http\Controllers',
+    ], 
+    function(){
+        Route::get('redirect', 'SocialController@redirect');
+        Route::get('callback', 'SocialController@callback');
+});
 
 
 Route::group(

@@ -11,6 +11,10 @@ use Validator;
 
 class UserController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth', ['except' => ['login', 'register']]);
+    // }
 
     public $successStatus = 200;
 
@@ -67,7 +71,7 @@ class UserController extends Controller
 
     public function details()
     {
-        $user = \Auth::user();
+        $user = Auth::user();
         return response()->json(['success' => $user], $this->successStatus);
     }
 } 
