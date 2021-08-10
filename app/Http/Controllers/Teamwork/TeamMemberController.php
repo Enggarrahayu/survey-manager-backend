@@ -119,10 +119,7 @@ class TeamMemberController extends Controller
         $team_user->team_id = $team_invite_model::where('id', $id)->first()->team_id;
         $team_user->save();
 
-
-        return response()->json([
-            'message'   =>  'User successfully join to the team',
-        ]);
+        return redirect()->away('http://localhost:8080');
     }
 
 
