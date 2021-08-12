@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Resources\TeamResource;
 use App\Http\Resources\TeamInvitationResource;
 use App\Http\Resources\MemberResource;
-use App\Http\Teamwork\Teamwork;
+use App\Http\Resources\AcceptInvitationResource;
 use App\Models\User;
 use App\Models\TeamInvites;
 use App\Models\Team;
@@ -70,7 +70,7 @@ class TeamMemberController extends Controller
                 $team_owner = User::where('id', $owner_id)->first()->username;
                 $accept_id = TeamInvites::where('email', request('email'))
                                         ->where('team_id', $team_id)
-                                        ->first()->id;
+                                        ->first()->invitation_key;
                 $username = User::where('email', request('email'))->first()->username;
                 Mail::to($invite->email)->send(new SendMail($username, $team_name, $accept_id, $team_owner));
             });
@@ -106,22 +106,34 @@ class TeamMemberController extends Controller
         return TeamResource::collection($owned);
     }
 
-    public function acceptInvite($id){
-        $user = User::where('id', Auth::user()->id);
-        $users = new User;
+    public function acceptInvite($invitation_key){
         $team_user = new TeamUser;
-        $team_invite_model = config('teamwork.invite_model');
-        $team_invite = $team_invite_model::findOrFail($id);
+        $team_invite = TeamInvites::where('invitation_key',$invitation_key)->first();
         $team_invite->invitation_status = 1;
         $team_invite->update();
 
-        $team_user->user_id = TeamInvites::where('id', $id)->first()->user_id;
-        $team_user->team_id = $team_invite_model::where('id', $id)->first()->team_id;
+        $team_user->user_id = TeamInvites::where('invitation_key', $invitation_key)->first()->user_id;
+        $team_user->team_id = TeamInvites::where('invitation_key', $invitation_key)->first()->team_id;
         $team_user->save();
+
 
         return redirect()->away('http://localhost:8080');
     }
 
+    public function acceptInvites($invitation_key){
+        $team_user = new TeamUser;
+        $team_invite = TeamInvites::where('invitation_key',$invitation_key)->first();
+        $team_invite->invitation_status = 1;
+        $team_invite->update();
+
+        $team_user->user_id = $team_invite->user_id;
+        $team_user->team_id = $team_invite->team_id;
+        $team_user->save();
 
 
+          return response()->json([
+                'data'      =>  new AcceptInvitationResource($team_invite),
+                'message'   =>  'Successfully joined to the team',
+            ], 201);
+    }
 }

@@ -10,6 +10,6 @@ class TeamInvites extends Model
     use HasFactory;
 
     protected $table = 'team_invites';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'invitation_key';
     public $incrementing = false;
 }

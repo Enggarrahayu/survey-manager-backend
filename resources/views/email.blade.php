@@ -1,3 +1,7 @@
+<!-- <h2 style="text-align: center;">Halo {{ $username }}</h2>
+You have been invited to join team {{ $team_name }}.<br>
+
+Click here to join: <a href="{{route('teams.members.accept', $accept_id)}}">JOIN</a> -->
 <!DOCTYPE html>
 <html>
 

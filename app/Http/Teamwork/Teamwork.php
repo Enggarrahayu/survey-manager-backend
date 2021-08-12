@@ -66,7 +66,7 @@ class Teamwork
 
         $random = Str::random(10);
         $invite = $this->app->make(Config::get('teamwork.invite_model'));
-        $invite->id = $random;
+        $invite->invitation_key = $random;
         $invite->user_id = User::where('email', $email)->first()->id;
         $invite->team_id = $team;
         $invite->type = 'invite';
