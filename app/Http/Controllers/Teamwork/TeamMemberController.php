@@ -112,11 +112,13 @@ class TeamMemberController extends Controller
         $team_invite->invitation_status = 1;
         $team_invite->update();
 
-        $team_user->user_id = TeamInvites::where('invitation_key', $invitation_key)->first()->user_id;
-        $team_user->team_id = TeamInvites::where('invitation_key', $invitation_key)->first()->team_id;
-        $team_user->save();
-
-
+        $team_id = $team_invite->team_id;
+        $user_id = $team_invite->user_id;
+        if(!TeamUser::where('user_id', $user_id)->where('team_id', $team_id)->exists()){
+            $team_user->user_id = $user_id;
+            $team_user->team_id = $team_id;
+            $team_user->save();
+        }
         return redirect()->away('http://localhost:8080');
     }
 
