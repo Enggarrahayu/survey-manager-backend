@@ -17,7 +17,7 @@ class TeamInvitationResource extends JsonResource
         // accessing:
         
         return [
-           
+            'invitation_key' =>  $this->invitation_key,
             'team_name'     =>  $this->name,
             'team_owner'    => User::where('id', $this->owner_id)->first()->username,
             'created_date'  => $this->created_at,
