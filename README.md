@@ -82,7 +82,7 @@ In the .env file, add database information to allow Laravel to connect to the da
     - use Illuminate\Support\Facades\DB; <br>
 9. php artisan db:seed <br>
  <b> if there'are still any errros add backslash before DB class inside run function </b> <br>
- 10. In Survey Model inside vendor\aidynmakhataev\laravelsurveyjs\src\app\Models add 'user_id' in $fillable
+ 10. In Survey Model inside vendor\aidynmakhataev\laravelsurveyjs\src\app\Models add 'user_id' and 'team_id' in $fillable
 
 
 
