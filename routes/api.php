@@ -52,7 +52,9 @@ Route::group(
     Route::get('team/pendingMember/{id}', 'TeamController@pendingMember');
     Route::get('team/surveyTeam/{id}', 'TeamController@showSurveyByTeam');
     Route::get('ownedTeam', 'TeamMemberController@ownedTeam');
-    Route::post('team/acceptInvitation/{id}', ['App\Http\Controllers\Teamwork\TeamMemberController', 'acceptInvites'])->name('teams.members.accept');
+    Route::delete('member/{team_id}/{user_id}', [
+        'App\Http\Controllers\Teamwork\TeamMemberController', 'destroy'
+        ])->name('teams.members.destroy');
 });
 
 Route::get('team/acceptInvitation/{id}', ['App\Http\Controllers\Teamwork\TeamMemberController', 'acceptInvite'])->name('teams.members.accept');

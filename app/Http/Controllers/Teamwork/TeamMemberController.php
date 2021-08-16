@@ -11,6 +11,7 @@ use App\Http\Resources\TeamInvitationResource;
 use App\Http\Resources\MemberResource;
 use App\Http\Resources\AcceptInvitationResource;
 use App\Models\User;
+use App\Models\Team;
 use App\Models\TeamInvites;
 use App\Models\Team;
 use App\Mail\SendMail;
@@ -45,6 +46,22 @@ class TeamMemberController extends Controller
                     ->where('team_id', $id)
                     ->get();
         return MemberResource::collection($member);
+    }
+    public function destroy($team_id, $user_id)
+    {
+        $teamModel = new Team;
+        $team = $teamModel::findOrFail($team_id);
+
+        $userModel = new User;
+        $user = $userModel::findOrFail($user_id);
+
+        $team_user = $user->detachTeam($team);
+        $team_user;
+        return response()->json([
+            'user_id' => $user_id,
+            'team_id' => $team_id,
+            'message' => 'Member deleted successfully',
+        ], 200);
     }
     public function invite(Request $request, $team_id)
     {
