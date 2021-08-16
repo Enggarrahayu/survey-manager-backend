@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Teamwork;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Resources\TeamResource;
-use App\Models\Team;
+use App\Http\Resources\PendingMemberResource;
 use App\Models\Survey;
+use App\Models\Team;
+use App\Models\TeamInvites;
 use App\Models\TeamUser;
 
 use Illuminate\Support\Facades\DB;
@@ -96,6 +98,18 @@ class TeamController extends Controller
                         ->where('survey_status', 0)
                         ->get();
         
-        return SurveyTeamResource::collection($surveyTeam);
+    public function pendingMember($id){
+        $team_invites = new TeamInvites;
+        $pendingMember = $team_invites
+                ->where('team_id', $id)
+                ->where('invitation_status', 0)
+                ->get();
+
+        $collection =  PendingMemberResource::collection($pendingMember);                
+        return response()->json([
+            'data'    =>  $collection,
+        ], 200);
+
     }
+    
 }

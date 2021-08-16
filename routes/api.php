@@ -49,8 +49,7 @@ Route::group(
     Route::get('team/acceptInvitation/{id}', ['App\Http\Controllers\Teamwork\TeamMemberController', 'acceptInvite'])->name('teams.members.accept');
     Route::post('member/{id}', 'TeamMemberController@invite');
     Route::get('team/pendingInvitations', 'TeamMemberController@pendingInvite');
-    // Route::get('team', 'TeamMemberController@showTeams');
-    Route::post('team/acceptInvitation/{id}', 'TeamMemberController@acceptInvite');
+    Route::get('team/pendingMember/{id}', 'TeamController@pendingMember');
     Route::get('team/surveyTeam/{id}', 'TeamController@showSurveyByTeam');
     Route::get('ownedTeam', 'TeamMemberController@ownedTeam');
     Route::post('team/acceptInvitation/{id}', ['App\Http\Controllers\Teamwork\TeamMemberController', 'acceptInvites'])->name('teams.members.accept');
