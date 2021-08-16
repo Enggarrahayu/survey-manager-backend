@@ -41,7 +41,7 @@ Route::group(
     ], 
     function(){
     Route::resource('/team', 'TeamController', ['only' => [
-     'store', 'index', 'destroy',
+     'store', 'index', 'destroy', 'update'
     ]]);
     Route::resource('/member', 'TeamMemberController', ['only' => [
         'index', 'store', 'update', 'destroy', 'show',

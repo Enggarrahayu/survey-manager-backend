@@ -66,6 +66,21 @@ class TeamController extends Controller
         return response()->json([
             'data'      =>  new TeamResource($team),
             'message'   =>  'Team successfully created',
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+
+        $teamModel = new Team;
+
+        $team = $teamModel::findOrFail($id);
+        $team->name = $request->name;
+        $team->save();
+
+        return response()->json([
+            'data'    =>  new TeamResource($team),
+            'message' => 'Team edited successfully',
         ]);
     }
 
