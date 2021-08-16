@@ -26,4 +26,24 @@ class Team extends TeamworkTeam
     {
         return $this->hasMany('app\Models\Survey');
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($team) {
+            $team->name = str_slug($team->name);
+
+            $latestSlug = static::whereRaw("name = '$team->name' or name LIKE '$team->name-%'")
+                                ->latest('id')
+                                ->value('name');
+            if ($latestSlug) {
+                $pieces = explode('-', $latestSlug);
+
+                $number = intval(end($pieces));
+
+                $team->name .= '-'.($number + 1);
+            }
+        });
+    }
 }

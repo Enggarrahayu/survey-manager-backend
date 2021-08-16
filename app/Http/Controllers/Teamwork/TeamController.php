@@ -53,7 +53,7 @@ class TeamController extends Controller
             'name' => 'required|string',
         ]);
 
-        $teamModel = config('teamwork.team_model');
+        $teamModel = new Team;
 
         $team = $teamModel::create([
             'name' => $request->name,
@@ -66,6 +66,7 @@ class TeamController extends Controller
         return response()->json([
             'data'      =>  new TeamResource($team),
             'message'   =>  'Team successfully created',
+        ], 201);
     public function update(Request $request, $id)
     {
         $request->validate([
