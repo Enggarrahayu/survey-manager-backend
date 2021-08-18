@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Team;
+use App\Models\TeamInvites;
 use Illuminate\Support\Facades\Auth;
+use Mpociot\Teamwork\TeamInvite;
 use Validator;
 
 class UserController extends Controller
@@ -53,6 +55,8 @@ class UserController extends Controller
         $team->owner_id = $user->id;
         $team->save();
 
+        TeamInvites::where('email', $user->email)
+                        ->update(['user_id' => $user->id]);
         $success['token'] =  $user->createToken('nApp')->accessToken;
         $success['username'] =  $user->username;
 
