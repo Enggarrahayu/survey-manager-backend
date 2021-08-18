@@ -14,6 +14,7 @@ use App\Models\TeamUser;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\TeamInvitationResource;
 use App\Http\Resources\SurveyTeamResource;
+use App\Http\Resources\TeamUserResource;
 use Illuminate\Support\Facades\Auth;
 
 use Mpociot\Teamwork\Exceptions\UserNotInTeamException;
@@ -32,15 +33,23 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teams = DB::table('team_invites')
+        $teams = DB::table('team_user')
             ->where('user_id', Auth::user()->id)
-            ->where('invitation_status', 1)
-            ->join('users', 'users.id', '=' ,'team_invites.user_id')
-            ->join('teams', 'teams.id', '=' , 'team_invites.team_id')
             ->get();
-    
-            return TeamInvitationResource::collection($teams, 200); 
+            
+            return TeamUserResource::collection($teams, 200); 
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -50,7 +59,7 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
+            'team_name' => 'required|string',
         ]);
 
         $teamModel = new Team;
@@ -70,7 +79,7 @@ class TeamController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string',
+            'team_name' => 'required|string',
         ]);
 
         $teamModel = new Team;

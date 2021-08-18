@@ -26,6 +26,7 @@ class TeamResource extends JsonResource
                                 ->groupBy(DB::raw("team_id"))
                                 ->where('team_id', $this->id)
                                 ->count('*'),
+            'team_deafult'     => $this->team_default,
         ];
     }
 }

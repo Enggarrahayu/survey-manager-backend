@@ -17,6 +17,7 @@ class MemberResource extends JsonResource
         return [
             'id'             => $this->team_id,
             'member_name'    =>  User::where('id', $this->user_id)->first()->username,
+            'email'          =>  User::where('id', $this->user_id)->first()->email,
             'role'           => 'member',
         ];
     }
