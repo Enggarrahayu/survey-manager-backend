@@ -42,7 +42,8 @@ class SurveyAPIController extends Controller
         $username = Auth::user()->username;
         $default_team = $username. '-team';
         if(is_null($team_name)){
-            $team_id = Team::where('name', $default_team)->first()->id;
+            $team_id = Team::where('owner_id', Auth::id())
+                        ->where('team_default', 1)->first()->id;
         } else{
             $team_id  =  Team::where('name', $team_name)->first()->id;
         }

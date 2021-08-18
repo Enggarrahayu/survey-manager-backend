@@ -53,6 +53,7 @@ class UserController extends Controller
         $team = new Team;
         $team->name = $name. '-team';
         $team->owner_id = $user->id;
+        $team->team_default = 1;
         $team->save();
 
         TeamInvites::where('email', $user->email)
