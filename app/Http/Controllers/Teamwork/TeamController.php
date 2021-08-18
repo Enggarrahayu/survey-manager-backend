@@ -56,7 +56,7 @@ class TeamController extends Controller
         $teamModel = new Team;
 
         $team = $teamModel::create([
-            'name' => $request->name,
+            'name' => $request->team_name,
             'owner_id' => $request->user()->getKey(),
         ]);
 
@@ -76,7 +76,7 @@ class TeamController extends Controller
         $teamModel = new Team;
 
         $team = $teamModel::findOrFail($id);
-        $team->name = $request->name;
+        $team->name = $request->team_name;
         $team->save();
 
         return response()->json([
