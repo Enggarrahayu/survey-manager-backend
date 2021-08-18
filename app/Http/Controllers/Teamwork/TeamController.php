@@ -39,7 +39,7 @@ class TeamController extends Controller
             ->join('teams', 'teams.id', '=' , 'team_invites.team_id')
             ->get();
     
-            return TeamInvitationResource::collection($teams); 
+            return TeamInvitationResource::collection($teams, 200); 
     }
     /**
      * Store a newly created resource in storage.
@@ -114,6 +114,12 @@ class TeamController extends Controller
                         ->where('survey_status', 0)
                         ->get();
         
+        $collection = SurveyTeamResource::collection($surveyTeam);
+        return response()->json([
+            'data'    =>  $collection,
+        ], 200);
+
+    }
     public function pendingMember($id){
         $team_invites = new TeamInvites;
         $pendingMember = $team_invites
