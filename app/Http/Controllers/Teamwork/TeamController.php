@@ -101,19 +101,26 @@ class TeamController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {   
+        $teamUserModel = new TeamUser;
         $teamModel = config('teamwork.team_model');
         $team = $teamModel::findOrFail($id);
-        $team->delete();
+        if($team->team_default != 1){
+            $team->delete();
 
-        $teamUserModel = new TeamUser;
-        $teamUser = $teamUserModel::where('team_id', $id);
-        $teamUser->delete();
+            $teamUser = $teamUserModel::where('team_id', $id);
+            $teamUser->delete();
 
-        return response()->json([
-            'data'    =>  new TeamResource($team),
-            'message' => 'Team deleted successfully',
-        ], 200);
+            return response()->json([
+                'data'    =>  new TeamResource($team),
+                'message' => 'Team deleted successfully',
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'Team default can not be deleted',
+            ], 200);
+        }
+           
 
     }
     public function showSurveyByTeam($id){
