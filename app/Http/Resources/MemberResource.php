@@ -19,6 +19,8 @@ class MemberResource extends JsonResource
             'member_name'    =>  User::where('id', $this->user_id)->first()->username,
             'email'          =>  User::where('id', $this->user_id)->first()->email,
             'role'           => 'member',
+            'team_id'        => $this->team_id,
+            'user_id'        => $this->user_id,
         ];
     }
 }

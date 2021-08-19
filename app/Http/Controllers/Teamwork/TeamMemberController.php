@@ -50,14 +50,14 @@ class TeamMemberController extends Controller
     }
     public function destroy($team_id, $user_id)
     {
-        $teamModel = new Team;
-        $team = $teamModel::findOrFail($team_id);
+        $teamUser = new TeamUser;
+        $team = $teamUser::where('team_id', $team_id)->where('user_id', $user_id);
+        $team->delete();
 
-        $userModel = new User;
-        $user = $userModel::findOrFail($user_id);
-
-        $team_user = $user->detachTeam($team);
-        $team_user;
+        $team_invites = TeamInvites::where('team_id', $team_id)->where('user_id', $user_id);
+        $team_invites->delete();
+        // $team_user = $user->detachTeam($team);
+        // $team_user;
         return response()->json([
             'user_id' => $user_id,
             'team_id' => $team_id,
