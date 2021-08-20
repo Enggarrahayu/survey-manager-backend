@@ -1,0 +1,702 @@
+{
+	"info": {
+		"_postman_id": "86442129-2104-455c-9ff4-31f39e2a951e",
+		"name": "Survey API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "{{url}}/register",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiYmUwM2RhYTMyZDUyYzcwMGE2NDIzMjVlNjA0OGM1M2FlMjNmMzU5MzQ2NTJhZDAyNTJjN2M4ZGMzNWE4MmVkMzllNzEzZTkxYTk3NWZhMmYiLCJpYXQiOjE2MjkyODA2MjEsIm5iZiI6MTYyOTI4MDYyMSwiZXhwIjoxNjYwODE2NjIxLCJzdWIiOiIxMCIsInNjb3BlcyI6W119.ZStDyippqrAZS-tti3i0K7z5nhiuN_bzGfvjSwNAgYBNSsI2Y2yvA3NCu6RDzKZaE9PPwQdwiqXIqI1nziNGfxz-nP0-B9711ODtoIW5O8B0pOb5e1zt8ZOk424SYwjiQB2uDTLpJQ-jQwq73LkPT1B8lNfrHAWI0wu0EBwt_BAI9EMhk5KT_1Cg1X0e1taZGYQKa5A0bRvnrlw8QDML1q-tB596O_8tzxO5TTT0iL2G7jLGWqqVJWTuSGVGU8-1SoAxSnIvM5SI77YMvx1WWpOR6q7ceaHNAu-7vaErg5aAZo0Z3un6FZVISxkehE_luULG6kJBlRCjIo2kfVKn_361HoNj2RMipyJqoUt4jediMmqE80KRmNpICsSnKd-kxTrlwEEw_4T1CX8TMm2YfKyirIIDnZAERBRbcaXrs8SrtEpf1njrW51-2L20wv6nFnq_TcQ29uWBscbhfis-1-Zbmj663ylxXf5Plbf_qldPNRMC3CXYwzW0kFUrlxcwKKY6dKCRv7RxP3iVEwAc2sInPbRS2C-Y6JXR1zGMdgH9ZbMzg9k26b_5Zyv3XZvadGUbZRjlLYEakhiL_gd_KMBgogG82MmW57N-mUjLFTl4LllU4q6WfEdAD8tlsBXV_MFgNAtQSTuc7eHYHQwbbJ_t8RSU5SUncK3SrQGHp0c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "enggarrs@gmail.com",
+							"description": "has to be unique",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "enggarrs123",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "enggarrs",
+							"type": "text"
+						},
+						{
+							"key": "c_password",
+							"value": "enggarrs123",
+							"description": "value has to be the same as password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"register"
+					]
+				},
+				"description": "used to register user's first account"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiNjE0MGY2ODI3NjY0MmYxZjNjM2FhY2JhZmNiODY5ODhmNzc3YmQ1MTY4NzgwNjRkMDA2OTMwNzYxZTVmMTFkMzdjMDMxNGE2NTlmZjVkNmUiLCJpYXQiOjE2MjkzNDk0NDcsIm5iZiI6MTYyOTM0OTQ0NywiZXhwIjoxNjYwODg1NDQ3LCJzdWIiOiI2NiIsInNjb3BlcyI6W119.M7-FqGQcc65RZUgYNKO5RYqtiV9ej6sMeWNBMQZJwOCDrRBhuDVHe2OCpvk8DThj6S_Dmh8jQZ1tzPigC5gbcsPYG6gnooSaN93b7hsNJUA6hkMyO3PEq_n05zhE8BgCTKuYc5cWqE9PdJNJTuYKUfJBxbl3woC2kZwK69YmZKS0AydHCkejvrAS9oeuqkAUsSoYoJ9SLTurGN_pnljuCNBhJMyHVxeHke0a_-NiMTXzJd7mLtOvGsUNSvUl3Hfo421x0PIUQ8OkVtGGZd7uNoz4-B2ZTEU8IMRzFppqDuebcybXxj0D7HEWQR8Cwaic39tzXEjYgUNHiV3nOgsmod4PPx66bSjG6nhCpq0A1C8bRNCq7MHOaug3TtZMYjyEIE4vKxxzu3dqckkrRhylY8kANXZTxqlT3mqRPhHb1-7ZoBMTcA7PPGsBe9lZHT_XsG-UjNlntdpoz1fQFadna84FIwbcsEv3ST_31SZ1UgTI8CTKVGPR-LB7H11z3YCDcj4j-QU5uZDgc3EmtjmDQxyGAg2S0k7dbnjF7C3JqVMaBsjoepDNQKQ1GiX5LpFfoYslneP31n-LtjKAGdLUi3ids4SaO0Vzh_FrBjweKWrcpb1j3lkoXwcAQ6hYYvN3Cx62j3N_uV-Eu0ul3RvHpZQIcDNWx5qmOE2MF1y1RL4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "enggarrs@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "enggarrs123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user/detail",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"detail"
+					]
+				},
+				"description": "use to authenticate user with email and password. if it's valid, then it returns token(bearer token) that has to be passed in header to authorize the user "
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/user/detail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiNjE0MGY2ODI3NjY0MmYxZjNjM2FhY2JhZmNiODY5ODhmNzc3YmQ1MTY4NzgwNjRkMDA2OTMwNzYxZTVmMTFkMzdjMDMxNGE2NTlmZjVkNmUiLCJpYXQiOjE2MjkzNDk0NDcsIm5iZiI6MTYyOTM0OTQ0NywiZXhwIjoxNjYwODg1NDQ3LCJzdWIiOiI2NiIsInNjb3BlcyI6W119.M7-FqGQcc65RZUgYNKO5RYqtiV9ej6sMeWNBMQZJwOCDrRBhuDVHe2OCpvk8DThj6S_Dmh8jQZ1tzPigC5gbcsPYG6gnooSaN93b7hsNJUA6hkMyO3PEq_n05zhE8BgCTKuYc5cWqE9PdJNJTuYKUfJBxbl3woC2kZwK69YmZKS0AydHCkejvrAS9oeuqkAUsSoYoJ9SLTurGN_pnljuCNBhJMyHVxeHke0a_-NiMTXzJd7mLtOvGsUNSvUl3Hfo421x0PIUQ8OkVtGGZd7uNoz4-B2ZTEU8IMRzFppqDuebcybXxj0D7HEWQR8Cwaic39tzXEjYgUNHiV3nOgsmod4PPx66bSjG6nhCpq0A1C8bRNCq7MHOaug3TtZMYjyEIE4vKxxzu3dqckkrRhylY8kANXZTxqlT3mqRPhHb1-7ZoBMTcA7PPGsBe9lZHT_XsG-UjNlntdpoz1fQFadna84FIwbcsEv3ST_31SZ1UgTI8CTKVGPR-LB7H11z3YCDcj4j-QU5uZDgc3EmtjmDQxyGAg2S0k7dbnjF7C3JqVMaBsjoepDNQKQ1GiX5LpFfoYslneP31n-LtjKAGdLUi3ids4SaO0Vzh_FrBjweKWrcpb1j3lkoXwcAQ6hYYvN3Cx62j3N_uV-Eu0ul3RvHpZQIcDNWx5qmOE2MF1y1RL4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/user/detail",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"detail"
+					]
+				},
+				"description": "get the user's detail"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/team",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiZmFjNzhjMDJlODY4MDUxMmY3YWU2YjJjM2NjMWNmY2MzZmZkMDNmODNkMzFjZTQ4ZDg2M2MwMDE5YjMyNzgyOTk4YzBmNjMxODEyMzg2ZjgiLCJpYXQiOjE2MjkzNTAxOTgsIm5iZiI6MTYyOTM1MDE5OCwiZXhwIjoxNjYwODg2MTk4LCJzdWIiOiI2NiIsInNjb3BlcyI6W119.KZQE3E-l0c4NWZbIy3YCqT52WKVceiuxsdXsMODOtLDUliL6gWA2PXyHgVD-M_EQ-AB5UePmExo9-dJHnvgvDCpv25qZfY8pEDepv0-aTLBBMJcpMR5Pi1H-SA_V1W_9yAJq-3FGmPSO31PG0kCRBio_msrxL2MWGc6M4RmHmXGSgBgjzCfJwcb6v6YSoGOxbSr5SPmlUVkTUww54SK9XClpBUOx4hTlxHtvoXTGgKUrKcJ3X34PRhr3rYbPMV6BRM9hVyTtcx1a8gV1LWXTJBIcuNwKSmiadlxdBVv-op_-CE3UAVOcEEySVBiN7NSZE4vOyt8GmsGkIFEstlmWnv5oQbe4vPE0WWSBIdoFsIe9lTFz0TRennDTmOVdToVax2s4TiQ6rM1ESYeawrHik3yGpWS878I56GZ2bjagIzVNRKDl_wfJMcu7sbXwVgbCMaLt8iSRGvqnpc44PSdTQHpRa_gmfJXqb7MzyHCJ-PDIGJrZ6kH-7fMhowqpEaFWN71nMjw0LKwolfvtmuWGcKO5ATTP4PHURevaNHMEJ3u1f_yu1JLkeH5dUGk8YqRFDc2KG-SSVJ1JxOxPf3dwN4e3Ahzsuwj77nu3ySQceCLIoeJPAYXrpZY3p7xbbn2c6xq4dmfnaxylrYQj2ed491H3pBACiE_VCY9xGAM1PN0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "team_name",
+							"value": "enggarrs team 2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/team",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"team"
+					]
+				},
+				"description": "create a new team "
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/ownedTeam",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiZmFjNzhjMDJlODY4MDUxMmY3YWU2YjJjM2NjMWNmY2MzZmZkMDNmODNkMzFjZTQ4ZDg2M2MwMDE5YjMyNzgyOTk4YzBmNjMxODEyMzg2ZjgiLCJpYXQiOjE2MjkzNTAxOTgsIm5iZiI6MTYyOTM1MDE5OCwiZXhwIjoxNjYwODg2MTk4LCJzdWIiOiI2NiIsInNjb3BlcyI6W119.KZQE3E-l0c4NWZbIy3YCqT52WKVceiuxsdXsMODOtLDUliL6gWA2PXyHgVD-M_EQ-AB5UePmExo9-dJHnvgvDCpv25qZfY8pEDepv0-aTLBBMJcpMR5Pi1H-SA_V1W_9yAJq-3FGmPSO31PG0kCRBio_msrxL2MWGc6M4RmHmXGSgBgjzCfJwcb6v6YSoGOxbSr5SPmlUVkTUww54SK9XClpBUOx4hTlxHtvoXTGgKUrKcJ3X34PRhr3rYbPMV6BRM9hVyTtcx1a8gV1LWXTJBIcuNwKSmiadlxdBVv-op_-CE3UAVOcEEySVBiN7NSZE4vOyt8GmsGkIFEstlmWnv5oQbe4vPE0WWSBIdoFsIe9lTFz0TRennDTmOVdToVax2s4TiQ6rM1ESYeawrHik3yGpWS878I56GZ2bjagIzVNRKDl_wfJMcu7sbXwVgbCMaLt8iSRGvqnpc44PSdTQHpRa_gmfJXqb7MzyHCJ-PDIGJrZ6kH-7fMhowqpEaFWN71nMjw0LKwolfvtmuWGcKO5ATTP4PHURevaNHMEJ3u1f_yu1JLkeH5dUGk8YqRFDc2KG-SSVJ1JxOxPf3dwN4e3Ahzsuwj77nu3ySQceCLIoeJPAYXrpZY3p7xbbn2c6xq4dmfnaxylrYQj2ed491H3pBACiE_VCY9xGAM1PN0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/ownedTeam",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ownedTeam"
+					]
+				},
+				"description": "show all the team which owned by the user"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/member/47",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiZmFjNzhjMDJlODY4MDUxMmY3YWU2YjJjM2NjMWNmY2MzZmZkMDNmODNkMzFjZTQ4ZDg2M2MwMDE5YjMyNzgyOTk4YzBmNjMxODEyMzg2ZjgiLCJpYXQiOjE2MjkzNTAxOTgsIm5iZiI6MTYyOTM1MDE5OCwiZXhwIjoxNjYwODg2MTk4LCJzdWIiOiI2NiIsInNjb3BlcyI6W119.KZQE3E-l0c4NWZbIy3YCqT52WKVceiuxsdXsMODOtLDUliL6gWA2PXyHgVD-M_EQ-AB5UePmExo9-dJHnvgvDCpv25qZfY8pEDepv0-aTLBBMJcpMR5Pi1H-SA_V1W_9yAJq-3FGmPSO31PG0kCRBio_msrxL2MWGc6M4RmHmXGSgBgjzCfJwcb6v6YSoGOxbSr5SPmlUVkTUww54SK9XClpBUOx4hTlxHtvoXTGgKUrKcJ3X34PRhr3rYbPMV6BRM9hVyTtcx1a8gV1LWXTJBIcuNwKSmiadlxdBVv-op_-CE3UAVOcEEySVBiN7NSZE4vOyt8GmsGkIFEstlmWnv5oQbe4vPE0WWSBIdoFsIe9lTFz0TRennDTmOVdToVax2s4TiQ6rM1ESYeawrHik3yGpWS878I56GZ2bjagIzVNRKDl_wfJMcu7sbXwVgbCMaLt8iSRGvqnpc44PSdTQHpRa_gmfJXqb7MzyHCJ-PDIGJrZ6kH-7fMhowqpEaFWN71nMjw0LKwolfvtmuWGcKO5ATTP4PHURevaNHMEJ3u1f_yu1JLkeH5dUGk8YqRFDc2KG-SSVJ1JxOxPf3dwN4e3Ahzsuwj77nu3ySQceCLIoeJPAYXrpZY3p7xbbn2c6xq4dmfnaxylrYQj2ed491H3pBACiE_VCY9xGAM1PN0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "fluffy@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/member/47",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"member",
+						"47"
+					]
+				},
+				"description": "invite user to be a member of a specify team by email"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/team",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiZmFjNzhjMDJlODY4MDUxMmY3YWU2YjJjM2NjMWNmY2MzZmZkMDNmODNkMzFjZTQ4ZDg2M2MwMDE5YjMyNzgyOTk4YzBmNjMxODEyMzg2ZjgiLCJpYXQiOjE2MjkzNTAxOTgsIm5iZiI6MTYyOTM1MDE5OCwiZXhwIjoxNjYwODg2MTk4LCJzdWIiOiI2NiIsInNjb3BlcyI6W119.KZQE3E-l0c4NWZbIy3YCqT52WKVceiuxsdXsMODOtLDUliL6gWA2PXyHgVD-M_EQ-AB5UePmExo9-dJHnvgvDCpv25qZfY8pEDepv0-aTLBBMJcpMR5Pi1H-SA_V1W_9yAJq-3FGmPSO31PG0kCRBio_msrxL2MWGc6M4RmHmXGSgBgjzCfJwcb6v6YSoGOxbSr5SPmlUVkTUww54SK9XClpBUOx4hTlxHtvoXTGgKUrKcJ3X34PRhr3rYbPMV6BRM9hVyTtcx1a8gV1LWXTJBIcuNwKSmiadlxdBVv-op_-CE3UAVOcEEySVBiN7NSZE4vOyt8GmsGkIFEstlmWnv5oQbe4vPE0WWSBIdoFsIe9lTFz0TRennDTmOVdToVax2s4TiQ6rM1ESYeawrHik3yGpWS878I56GZ2bjagIzVNRKDl_wfJMcu7sbXwVgbCMaLt8iSRGvqnpc44PSdTQHpRa_gmfJXqb7MzyHCJ-PDIGJrZ6kH-7fMhowqpEaFWN71nMjw0LKwolfvtmuWGcKO5ATTP4PHURevaNHMEJ3u1f_yu1JLkeH5dUGk8YqRFDc2KG-SSVJ1JxOxPf3dwN4e3Ahzsuwj77nu3ySQceCLIoeJPAYXrpZY3p7xbbn2c6xq4dmfnaxylrYQj2ed491H3pBACiE_VCY9xGAM1PN0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/team",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"team"
+					]
+				},
+				"description": "show teams that the user join as team member"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/team/49",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiZmFjNzhjMDJlODY4MDUxMmY3YWU2YjJjM2NjMWNmY2MzZmZkMDNmODNkMzFjZTQ4ZDg2M2MwMDE5YjMyNzgyOTk4YzBmNjMxODEyMzg2ZjgiLCJpYXQiOjE2MjkzNTAxOTgsIm5iZiI6MTYyOTM1MDE5OCwiZXhwIjoxNjYwODg2MTk4LCJzdWIiOiI2NiIsInNjb3BlcyI6W119.KZQE3E-l0c4NWZbIy3YCqT52WKVceiuxsdXsMODOtLDUliL6gWA2PXyHgVD-M_EQ-AB5UePmExo9-dJHnvgvDCpv25qZfY8pEDepv0-aTLBBMJcpMR5Pi1H-SA_V1W_9yAJq-3FGmPSO31PG0kCRBio_msrxL2MWGc6M4RmHmXGSgBgjzCfJwcb6v6YSoGOxbSr5SPmlUVkTUww54SK9XClpBUOx4hTlxHtvoXTGgKUrKcJ3X34PRhr3rYbPMV6BRM9hVyTtcx1a8gV1LWXTJBIcuNwKSmiadlxdBVv-op_-CE3UAVOcEEySVBiN7NSZE4vOyt8GmsGkIFEstlmWnv5oQbe4vPE0WWSBIdoFsIe9lTFz0TRennDTmOVdToVax2s4TiQ6rM1ESYeawrHik3yGpWS878I56GZ2bjagIzVNRKDl_wfJMcu7sbXwVgbCMaLt8iSRGvqnpc44PSdTQHpRa_gmfJXqb7MzyHCJ-PDIGJrZ6kH-7fMhowqpEaFWN71nMjw0LKwolfvtmuWGcKO5ATTP4PHURevaNHMEJ3u1f_yu1JLkeH5dUGk8YqRFDc2KG-SSVJ1JxOxPf3dwN4e3Ahzsuwj77nu3ySQceCLIoeJPAYXrpZY3p7xbbn2c6xq4dmfnaxylrYQj2ed491H3pBACiE_VCY9xGAM1PN0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/team/49",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"team",
+						"49"
+					]
+				},
+				"description": "delete team by id"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/team/47",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiZmFjNzhjMDJlODY4MDUxMmY3YWU2YjJjM2NjMWNmY2MzZmZkMDNmODNkMzFjZTQ4ZDg2M2MwMDE5YjMyNzgyOTk4YzBmNjMxODEyMzg2ZjgiLCJpYXQiOjE2MjkzNTAxOTgsIm5iZiI6MTYyOTM1MDE5OCwiZXhwIjoxNjYwODg2MTk4LCJzdWIiOiI2NiIsInNjb3BlcyI6W119.KZQE3E-l0c4NWZbIy3YCqT52WKVceiuxsdXsMODOtLDUliL6gWA2PXyHgVD-M_EQ-AB5UePmExo9-dJHnvgvDCpv25qZfY8pEDepv0-aTLBBMJcpMR5Pi1H-SA_V1W_9yAJq-3FGmPSO31PG0kCRBio_msrxL2MWGc6M4RmHmXGSgBgjzCfJwcb6v6YSoGOxbSr5SPmlUVkTUww54SK9XClpBUOx4hTlxHtvoXTGgKUrKcJ3X34PRhr3rYbPMV6BRM9hVyTtcx1a8gV1LWXTJBIcuNwKSmiadlxdBVv-op_-CE3UAVOcEEySVBiN7NSZE4vOyt8GmsGkIFEstlmWnv5oQbe4vPE0WWSBIdoFsIe9lTFz0TRennDTmOVdToVax2s4TiQ6rM1ESYeawrHik3yGpWS878I56GZ2bjagIzVNRKDl_wfJMcu7sbXwVgbCMaLt8iSRGvqnpc44PSdTQHpRa_gmfJXqb7MzyHCJ-PDIGJrZ6kH-7fMhowqpEaFWN71nMjw0LKwolfvtmuWGcKO5ATTP4PHURevaNHMEJ3u1f_yu1JLkeH5dUGk8YqRFDc2KG-SSVJ1JxOxPf3dwN4e3Ahzsuwj77nu3ySQceCLIoeJPAYXrpZY3p7xbbn2c6xq4dmfnaxylrYQj2ed491H3pBACiE_VCY9xGAM1PN0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "team_name",
+							"value": "team-2 enggarrs",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/team/47",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"team",
+						"47"
+					]
+				},
+				"description": "edit team"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/member/7",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiZmFjNzhjMDJlODY4MDUxMmY3YWU2YjJjM2NjMWNmY2MzZmZkMDNmODNkMzFjZTQ4ZDg2M2MwMDE5YjMyNzgyOTk4YzBmNjMxODEyMzg2ZjgiLCJpYXQiOjE2MjkzNTAxOTgsIm5iZiI6MTYyOTM1MDE5OCwiZXhwIjoxNjYwODg2MTk4LCJzdWIiOiI2NiIsInNjb3BlcyI6W119.KZQE3E-l0c4NWZbIy3YCqT52WKVceiuxsdXsMODOtLDUliL6gWA2PXyHgVD-M_EQ-AB5UePmExo9-dJHnvgvDCpv25qZfY8pEDepv0-aTLBBMJcpMR5Pi1H-SA_V1W_9yAJq-3FGmPSO31PG0kCRBio_msrxL2MWGc6M4RmHmXGSgBgjzCfJwcb6v6YSoGOxbSr5SPmlUVkTUww54SK9XClpBUOx4hTlxHtvoXTGgKUrKcJ3X34PRhr3rYbPMV6BRM9hVyTtcx1a8gV1LWXTJBIcuNwKSmiadlxdBVv-op_-CE3UAVOcEEySVBiN7NSZE4vOyt8GmsGkIFEstlmWnv5oQbe4vPE0WWSBIdoFsIe9lTFz0TRennDTmOVdToVax2s4TiQ6rM1ESYeawrHik3yGpWS878I56GZ2bjagIzVNRKDl_wfJMcu7sbXwVgbCMaLt8iSRGvqnpc44PSdTQHpRa_gmfJXqb7MzyHCJ-PDIGJrZ6kH-7fMhowqpEaFWN71nMjw0LKwolfvtmuWGcKO5ATTP4PHURevaNHMEJ3u1f_yu1JLkeH5dUGk8YqRFDc2KG-SSVJ1JxOxPf3dwN4e3Ahzsuwj77nu3ySQceCLIoeJPAYXrpZY3p7xbbn2c6xq4dmfnaxylrYQj2ed491H3pBACiE_VCY9xGAM1PN0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/member/7",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"member",
+						"7"
+					]
+				},
+				"description": "show the list of team members in a specify team"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/team/acceptInvitation/M3Lbv9iQyR",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiZTUxZDhiZDYxOWZlNTdkYjY4NTNhYzczYzk1YWU1YmE1MjRmNjg4NmZkNzFmMTk4MjMzZTliN2JkOTMyMzIwY2YyZDNmNTU4MzAwNDcxZjUiLCJpYXQiOjE2Mjk0NTI2NzUsIm5iZiI6MTYyOTQ1MjY3NSwiZXhwIjoxNjYwOTg4Njc1LCJzdWIiOiI2MyIsInNjb3BlcyI6W119.eVoiqOAthOmdtiafAzaAQAMm_kwtdn52Z-tw7kIwnvKHiPBnEK9SSE_Q0D3TFjLDRXa-j22AeL0J1CI6k_QSXLkWD5d2gWv_z6_DdYAHaUMZuTMBW8_e7vtw9x4icgZLuXZRIoOtOghX9UUyBt4pS4gihsqH5loj07B80T1JloQQLEeRPNF_ot46mWyQPs9-0ggbzorswiiq5jzkCsziBI3KbypSfCdnHXA3Lo0QTdGb8XTJk2UkO1QqwCpThpT9B6jnj50A9ZTvdd4CLYwmov7OmAECxDiwYXUJhQREHcbk3nUZgPNIl5cfah34Zu681HsjID8wVFhnJ4uocLytFC7BWM1A25o-LM-YlldIlfdr09eJLu0yp0PPok7eF07SaW0h2zGzsG_Vb4lTCnVX33I-41ZOpfaITPbrdM5WyWFCsvcZkcHKpKQES-VzOuKv82WysFJ_HWbF58aZIzarkuFJsVY4scFWcaJbo1GgxFhjuVCDmp5r86c46k-0IKxaU9M3EhWVFJFufE5kaOqIxSAtpADMxbLQ1ydb_ssOKh3IVy0uVZkBq9TJBLF-VPleE4A1YjcN-IAWzut3kjbOmIP_K3by7SjXqVPQY3PBbdOk_agPkeyLDojcJsldOoECWVir5lnNvcei5TybOq5dblK_aIUotuueOIxe8VBd-Mo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/team/acceptInvitation/M3Lbv9iQyR",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"team",
+						"acceptInvitation",
+						"M3Lbv9iQyR"
+					]
+				},
+				"description": "to accept team invitation for user who is requested to join team"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/member/50/63",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiNjRmNzFjYmFlN2EwOWUzNWZkNzU3MjkzM2I4ZTNhMGZiMWZmYjAyNmMzYTVlZDc3MzU5OGUzNGRjOGRiNWRiN2RkMzZlOTZhNzFkZTVkMzEiLCJpYXQiOjE2Mjk0NTI5OTksIm5iZiI6MTYyOTQ1Mjk5OSwiZXhwIjoxNjYwOTg4OTk5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.u3EizmHRmmIpmC6l_vhO1_EWFUPr5b2C013bF1OsBaV8uSg4bJvWHPUfknVfkmc4ZMem5Aaky8hTyrEBGE-JsT7vDNOLrry-a4Eqmr56ZD_KkbSVs30Mhb0k2zTucQlKwbEbb5bXxrrzmmoDoubspHwLP9aEkDTvxblLVyX1Ymx8pEbZSc-neiXZJKF1PlhzqSATCyhHI34H--IbK13hbAu6X-Si0uLQjpQmI9YTcPnNCwfuSnU676znq4dEqE2gR_Ax-q2eoA2vcarBUDp4RfkygfvqwENNK1vK8NDi7fqE8O33PCpzdrdB1MSir66woRuQ6U8E6KC3TpxlnECccEGKzZZwjbqE23ULGqam4s83MTp7KY6tbIxkZMTliXY0euDeDukXcfIYgzP97-xh4O4T6jKGz9XyqOsI5BzNwgMk35OREGACMCXbNNU39iIaL1pgLks7YYjNvUmo-Q6pPubcxd7MvpfFmEK6HxdPacspgAqUQLFfM-RKoxUCZebEFAb-tu5pxxThEX2NPo3mi9oaT95cvHnkVfsn_qUCP3qklQ6nHBmuhHOcVbqQJF9oX-hZyTOzSZLdQMoGpBwqUNvzVGHAlXllZwXLfOANaGjYZRGH1xvXIypgkwVJxFxB8R2RmUvBiU2l_WAvMAhJBObs8G7lxxjz3xIIL-yt08I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/member/50/63",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"member",
+						"50",
+						"63"
+					]
+				},
+				"description": "remove member from team"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/team/pendingInvitations",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiMTY0ZGYxYmUxYjRhNzAyMjA0NjZkZjViMzM1YzRjMTM3YWUwNjMyMjhlNWZkYThjYTkzNzFlMTFjNzYzMTdkNDg1NGI1YWVhOGJiMjA3ZjkiLCJpYXQiOjE2Mjk0NTMyMTAsIm5iZiI6MTYyOTQ1MzIxMCwiZXhwIjoxNjYwOTg5MjEwLCJzdWIiOiI2MSIsInNjb3BlcyI6W119.dagKoSYhsCuTXpkBKtR5ZCMdz3LP4OOMtdhe9LXFBs0ebc3h58AJhb2FQ51DmtK48rsaAA_FO-CX-_kOOMzNc6OIk60yyf7R_LW3kO09VLZS_SRUv74GsnGHdPoFPbe-4fIEkl26CsKKPhrS1VtqKSDMmra-yYkZlR9jYQ7utegdYhGb2qjcfEmhVeVBtftTP1HJqxgwATnLg_0X91dIruChZyb4u8isn0nPIocR7buP2zRP61cwZe5zh_09-EvkSMqS0sVo-lwcCWLgAcspZG3lYcyLrxY6qOu-DEnqA_VrecC6iyfZvCpNM1LW7SrxdzEBbd0EHea2c_v_yxFlbhwwOtG6xMPLVg4gVS3z7IX0qc1IJEHef_D80TF2zirYQ4EvdASWnMvmfcQHENgVckjrxdT2QYfPiVHTdVoVwgc--XuZH_PRWBczJnCOm4Y4NC5vRDr4JJa0Ovcv0ZMBUjhEMfoAJaNHDp7sLP5lsl9BTGbXCgyTWAJE0bWN8Wkkv_EkLPIw603utcjqH3lbQ1vLWU_k9cK-Vl43nulXyN1alJ5ErTvifLB6utaI3t0kYIMlKBGVSc5CBHncolJM-36eB1PKJd7OZi2SR6FskahsyhmTOtUh2cY2-SGspFpEfc793GzCP-g02zinyYkIijlB30vY9GtIbNQ7SeBD3iY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/team/pendingInvitations",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"team",
+						"pendingInvitations"
+					]
+				},
+				"description": "Used to show list of pending team invitation of a user"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/team/pendingMember/5",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiMTY0ZGYxYmUxYjRhNzAyMjA0NjZkZjViMzM1YzRjMTM3YWUwNjMyMjhlNWZkYThjYTkzNzFlMTFjNzYzMTdkNDg1NGI1YWVhOGJiMjA3ZjkiLCJpYXQiOjE2Mjk0NTMyMTAsIm5iZiI6MTYyOTQ1MzIxMCwiZXhwIjoxNjYwOTg5MjEwLCJzdWIiOiI2MSIsInNjb3BlcyI6W119.dagKoSYhsCuTXpkBKtR5ZCMdz3LP4OOMtdhe9LXFBs0ebc3h58AJhb2FQ51DmtK48rsaAA_FO-CX-_kOOMzNc6OIk60yyf7R_LW3kO09VLZS_SRUv74GsnGHdPoFPbe-4fIEkl26CsKKPhrS1VtqKSDMmra-yYkZlR9jYQ7utegdYhGb2qjcfEmhVeVBtftTP1HJqxgwATnLg_0X91dIruChZyb4u8isn0nPIocR7buP2zRP61cwZe5zh_09-EvkSMqS0sVo-lwcCWLgAcspZG3lYcyLrxY6qOu-DEnqA_VrecC6iyfZvCpNM1LW7SrxdzEBbd0EHea2c_v_yxFlbhwwOtG6xMPLVg4gVS3z7IX0qc1IJEHef_D80TF2zirYQ4EvdASWnMvmfcQHENgVckjrxdT2QYfPiVHTdVoVwgc--XuZH_PRWBczJnCOm4Y4NC5vRDr4JJa0Ovcv0ZMBUjhEMfoAJaNHDp7sLP5lsl9BTGbXCgyTWAJE0bWN8Wkkv_EkLPIw603utcjqH3lbQ1vLWU_k9cK-Vl43nulXyN1alJ5ErTvifLB6utaI3t0kYIMlKBGVSc5CBHncolJM-36eB1PKJd7OZi2SR6FskahsyhmTOtUh2cY2-SGspFpEfc793GzCP-g02zinyYkIijlB30vY9GtIbNQ7SeBD3iY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/team/pendingMember/5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"team",
+						"pendingMember",
+						"5"
+					]
+				},
+				"description": "To show list of email that has been requested to join team but hasn't been accepted the invitation"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/team/surveyTeam/23",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiMTY0ZGYxYmUxYjRhNzAyMjA0NjZkZjViMzM1YzRjMTM3YWUwNjMyMjhlNWZkYThjYTkzNzFlMTFjNzYzMTdkNDg1NGI1YWVhOGJiMjA3ZjkiLCJpYXQiOjE2Mjk0NTMyMTAsIm5iZiI6MTYyOTQ1MzIxMCwiZXhwIjoxNjYwOTg5MjEwLCJzdWIiOiI2MSIsInNjb3BlcyI6W119.dagKoSYhsCuTXpkBKtR5ZCMdz3LP4OOMtdhe9LXFBs0ebc3h58AJhb2FQ51DmtK48rsaAA_FO-CX-_kOOMzNc6OIk60yyf7R_LW3kO09VLZS_SRUv74GsnGHdPoFPbe-4fIEkl26CsKKPhrS1VtqKSDMmra-yYkZlR9jYQ7utegdYhGb2qjcfEmhVeVBtftTP1HJqxgwATnLg_0X91dIruChZyb4u8isn0nPIocR7buP2zRP61cwZe5zh_09-EvkSMqS0sVo-lwcCWLgAcspZG3lYcyLrxY6qOu-DEnqA_VrecC6iyfZvCpNM1LW7SrxdzEBbd0EHea2c_v_yxFlbhwwOtG6xMPLVg4gVS3z7IX0qc1IJEHef_D80TF2zirYQ4EvdASWnMvmfcQHENgVckjrxdT2QYfPiVHTdVoVwgc--XuZH_PRWBczJnCOm4Y4NC5vRDr4JJa0Ovcv0ZMBUjhEMfoAJaNHDp7sLP5lsl9BTGbXCgyTWAJE0bWN8Wkkv_EkLPIw603utcjqH3lbQ1vLWU_k9cK-Vl43nulXyN1alJ5ErTvifLB6utaI3t0kYIMlKBGVSc5CBHncolJM-36eB1PKJd7OZi2SR6FskahsyhmTOtUh2cY2-SGspFpEfc793GzCP-g02zinyYkIijlB30vY9GtIbNQ7SeBD3iY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/team/surveyTeam/23",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"team",
+						"surveyTeam",
+						"23"
+					]
+				},
+				"description": "to show list of survey which owned by a team"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/survey",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiYzQ0MTA3ZTZlYWMwNTcyOTViM2JlOTc3NzZkNmIwMmIwYjVkNGY1NWVkN2Q2ZDBhNmY2ZWQzMDI4MmZlNGJkOTQxMTczYWEwZDJlMmM5NjMiLCJpYXQiOjE2Mjk0NTM4NjIsIm5iZiI6MTYyOTQ1Mzg2MiwiZXhwIjoxNjYwOTg5ODYyLCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.MHS9TP0UGvgnBYdFqkxOW-tglUF0b_RKcQopnhFLaKbpDJ9W6qA79vVH4hXIiknAsqAaqTLiRnpryE2Uq66S3MCVEC-_NHqan6MoePpC4WPdt_JMksq54m9aTKdQ35VZYds1NV81cHmbCLi8hxTgCGjmG18HHMf8AiBVYXQ3Y5YOrrAqksGPLB2D3L6SsDGkMTIWW18C5zdIWHZ8v5kRKQ_P2GsqCJRs9r4q1WyZd5B94Ji3jbuTcEMhlfB-gtLGc4c7WjqrciZSIbaRgKe1rreei9_zPWL8UXsEC5xQ4JOHQFVvxcsqWLFG1r9MCAh-OOhFl7ejW3hytJFyxfj5rfLJRzx_KVYtTGvhfES4tQLIDQ6H5A9vpqAppD3CnfZBHqCBAU6-Z7-ikn5iOnk4zioe8j7h7mUdDoV7pVMMbBXsrWIKeSGBKeDyWwogiQ21NvepzmP6Qg05nN9UhHtOad0nLFgqR3Uv-iRGIznO6WqB8-01h8KKPuKv0eIKvCsUJhNaJ0QOYwiHqtoDFEAJe78Kl3HjX47xOGrcPPrA4h1My4OT18FzT7Er0tID3kpDe1Rro-u0V7mIXEjvgQK6Whl0F3eKjbnzTGdSbZw_BcA7KOT5fofraahQCTV9h3edNon03-iBqsuqFOkZiItrgJVES0IgqIM7-fXkrl0U_oc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/survey",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"survey"
+					]
+				},
+				"description": "to show list of surveys that owned by a user"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/survey",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiYjNhZTYyNmI4Mzc2ZDEwYjBiODMwNzc3NjE0YTc4ODQ5MzQ1ZDU2ZmQ1ODgzZjQzZmQzMWEzOTg1NTQxOGFkMjQ3Yjk1MGRlZDc2ODhlMjgiLCJpYXQiOjE2Mjk0NTQxMjYsIm5iZiI6MTYyOTQ1NDEyNiwiZXhwIjoxNjYwOTkwMTI2LCJzdWIiOiI2NiIsInNjb3BlcyI6W119.GxX461LU0-BKd19jCoRxHyGg626W-0Y7Rzb2GGsO76QmodtE7xzSn-QK031EobVVdBaU8gcJzkYHBkD9UDet8q32Q3k8OGnlt6l_kY2m-Ug9DqBhYtfSF5v5pQ_ch_EP04RU60U-WyKWRqcmcT3gN51rn7hzadWoWZdiHaQZ_WCwRG8PJT_i0LECKWspKJxhgmLJKcIMXPHPfoI6MrbbN4QuNvF7QxdhqNp3Jrp7L4HGLN8L7zGdjAIWZVOvaFsbCA_VUKYbq2Z6u6YcO3jHMvvwXcw80-p2weoPgXOApi3G-ZM0QyoctegVjTaXgoMUX6BJWoTxreqsfA17003ye2uXwpqBNrRVq8zhDucvDyNz0Accw3WTU790pH8DPJS1gyXRlIN3iq657j3SckO01JBvxcapQg_jQM8fL8A-aKwJXrf_OenyvfFOLT5I1cP0kHy0woVxK7dVTB1fz6B5cSaL2Q8P-zzO4xrtAwVnvH37dsxNDnHMVbUftk_GssgYz4cHadELIwswp7Q74_I9ID3Fc91b3QsqxzymnYOQpsBNOXPaocVRgr-MTtJ-k3YXQPKym2F5pJapj9V6ZDWxA0PeeFjBatHWucKelVwiOVOBdFjjpDBSF94cO4IeHWLerJOLGvWtghmTwv9YfZlAD8KFA2QY4SA7iM1oytWxYvU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "clothes survey",
+							"type": "text"
+						},
+						{
+							"key": "json",
+							"value": "this is json field",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/survey",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"survey"
+					]
+				},
+				"description": "used to create a survey"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/survey/36",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiYjNhZTYyNmI4Mzc2ZDEwYjBiODMwNzc3NjE0YTc4ODQ5MzQ1ZDU2ZmQ1ODgzZjQzZmQzMWEzOTg1NTQxOGFkMjQ3Yjk1MGRlZDc2ODhlMjgiLCJpYXQiOjE2Mjk0NTQxMjYsIm5iZiI6MTYyOTQ1NDEyNiwiZXhwIjoxNjYwOTkwMTI2LCJzdWIiOiI2NiIsInNjb3BlcyI6W119.GxX461LU0-BKd19jCoRxHyGg626W-0Y7Rzb2GGsO76QmodtE7xzSn-QK031EobVVdBaU8gcJzkYHBkD9UDet8q32Q3k8OGnlt6l_kY2m-Ug9DqBhYtfSF5v5pQ_ch_EP04RU60U-WyKWRqcmcT3gN51rn7hzadWoWZdiHaQZ_WCwRG8PJT_i0LECKWspKJxhgmLJKcIMXPHPfoI6MrbbN4QuNvF7QxdhqNp3Jrp7L4HGLN8L7zGdjAIWZVOvaFsbCA_VUKYbq2Z6u6YcO3jHMvvwXcw80-p2weoPgXOApi3G-ZM0QyoctegVjTaXgoMUX6BJWoTxreqsfA17003ye2uXwpqBNrRVq8zhDucvDyNz0Accw3WTU790pH8DPJS1gyXRlIN3iq657j3SckO01JBvxcapQg_jQM8fL8A-aKwJXrf_OenyvfFOLT5I1cP0kHy0woVxK7dVTB1fz6B5cSaL2Q8P-zzO4xrtAwVnvH37dsxNDnHMVbUftk_GssgYz4cHadELIwswp7Q74_I9ID3Fc91b3QsqxzymnYOQpsBNOXPaocVRgr-MTtJ-k3YXQPKym2F5pJapj9V6ZDWxA0PeeFjBatHWucKelVwiOVOBdFjjpDBSF94cO4IeHWLerJOLGvWtghmTwv9YfZlAD8KFA2QY4SA7iM1oytWxYvU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{url}}/survey/36",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"survey",
+						"36"
+					]
+				},
+				"description": "used to delete a survey by id"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/survey/34",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiYjNhZTYyNmI4Mzc2ZDEwYjBiODMwNzc3NjE0YTc4ODQ5MzQ1ZDU2ZmQ1ODgzZjQzZmQzMWEzOTg1NTQxOGFkMjQ3Yjk1MGRlZDc2ODhlMjgiLCJpYXQiOjE2Mjk0NTQxMjYsIm5iZiI6MTYyOTQ1NDEyNiwiZXhwIjoxNjYwOTkwMTI2LCJzdWIiOiI2NiIsInNjb3BlcyI6W119.GxX461LU0-BKd19jCoRxHyGg626W-0Y7Rzb2GGsO76QmodtE7xzSn-QK031EobVVdBaU8gcJzkYHBkD9UDet8q32Q3k8OGnlt6l_kY2m-Ug9DqBhYtfSF5v5pQ_ch_EP04RU60U-WyKWRqcmcT3gN51rn7hzadWoWZdiHaQZ_WCwRG8PJT_i0LECKWspKJxhgmLJKcIMXPHPfoI6MrbbN4QuNvF7QxdhqNp3Jrp7L4HGLN8L7zGdjAIWZVOvaFsbCA_VUKYbq2Z6u6YcO3jHMvvwXcw80-p2weoPgXOApi3G-ZM0QyoctegVjTaXgoMUX6BJWoTxreqsfA17003ye2uXwpqBNrRVq8zhDucvDyNz0Accw3WTU790pH8DPJS1gyXRlIN3iq657j3SckO01JBvxcapQg_jQM8fL8A-aKwJXrf_OenyvfFOLT5I1cP0kHy0woVxK7dVTB1fz6B5cSaL2Q8P-zzO4xrtAwVnvH37dsxNDnHMVbUftk_GssgYz4cHadELIwswp7Q74_I9ID3Fc91b3QsqxzymnYOQpsBNOXPaocVRgr-MTtJ-k3YXQPKym2F5pJapj9V6ZDWxA0PeeFjBatHWucKelVwiOVOBdFjjpDBSF94cO4IeHWLerJOLGvWtghmTwv9YfZlAD8KFA2QY4SA7iM1oytWxYvU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "rahayu survey",
+							"type": "text"
+						},
+						{
+							"key": "slug",
+							"value": "rahayu-survey",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/survey/34",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"survey",
+						"34"
+					]
+				},
+				"description": "used to edit a survey by id"
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/survey/34",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI3IiwianRpIjoiYjNhZTYyNmI4Mzc2ZDEwYjBiODMwNzc3NjE0YTc4ODQ5MzQ1ZDU2ZmQ1ODgzZjQzZmQzMWEzOTg1NTQxOGFkMjQ3Yjk1MGRlZDc2ODhlMjgiLCJpYXQiOjE2Mjk0NTQxMjYsIm5iZiI6MTYyOTQ1NDEyNiwiZXhwIjoxNjYwOTkwMTI2LCJzdWIiOiI2NiIsInNjb3BlcyI6W119.GxX461LU0-BKd19jCoRxHyGg626W-0Y7Rzb2GGsO76QmodtE7xzSn-QK031EobVVdBaU8gcJzkYHBkD9UDet8q32Q3k8OGnlt6l_kY2m-Ug9DqBhYtfSF5v5pQ_ch_EP04RU60U-WyKWRqcmcT3gN51rn7hzadWoWZdiHaQZ_WCwRG8PJT_i0LECKWspKJxhgmLJKcIMXPHPfoI6MrbbN4QuNvF7QxdhqNp3Jrp7L4HGLN8L7zGdjAIWZVOvaFsbCA_VUKYbq2Z6u6YcO3jHMvvwXcw80-p2weoPgXOApi3G-ZM0QyoctegVjTaXgoMUX6BJWoTxreqsfA17003ye2uXwpqBNrRVq8zhDucvDyNz0Accw3WTU790pH8DPJS1gyXRlIN3iq657j3SckO01JBvxcapQg_jQM8fL8A-aKwJXrf_OenyvfFOLT5I1cP0kHy0woVxK7dVTB1fz6B5cSaL2Q8P-zzO4xrtAwVnvH37dsxNDnHMVbUftk_GssgYz4cHadELIwswp7Q74_I9ID3Fc91b3QsqxzymnYOQpsBNOXPaocVRgr-MTtJ-k3YXQPKym2F5pJapj9V6ZDWxA0PeeFjBatHWucKelVwiOVOBdFjjpDBSF94cO4IeHWLerJOLGvWtghmTwv9YfZlAD8KFA2QY4SA7iM1oytWxYvU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/survey/34",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"survey",
+						"34"
+					]
+				},
+				"description": "used to show a survey by id"
+			},
+			"response": []
+		}
+	]
+}
