@@ -17,8 +17,7 @@ class PendingMemberResource extends JsonResource
     {
         return [
             'team_id'        =>  $this->team_id,
-            'team_name'      =>  Team::where('id', $this->team_id)->first()->name,
-            'member_name'    =>  User::where('id', $this->user_id)->first()->username,
+            'email'          =>  $this->email,
             'status'         => 'Pending',
         ];
     }

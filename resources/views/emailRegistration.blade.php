@@ -125,7 +125,7 @@
                                         <table cellspacing="0" cellpadding="0">
                                             <tr style="align-items: center;">
                                                 <td style="border-radius: 3px;">
-                                                <a href="http://localhost:8080/register?email=$email"  target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block; background-color:black;">REGISTER</a></td>
+                                                <a href="http://localhost:8080/register?email={{$email}}" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block; background-color:black;">REGISTER</a></td>
                                             </tr>
                                         </table>
                                     </td>
